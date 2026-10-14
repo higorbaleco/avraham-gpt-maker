@@ -1,0 +1,26 @@
+{
+  "name": "gpt-maker-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Dashboard for managing GPT Maker agents, knowledge, channels, and conversations",
+  "scripts": {
+    "install": "pnpm install",
+    "lint": "pnpm -r lint",
+    "format": "pnpm -r format",
+    "test": "pnpm -r test",
+    "build": "pnpm -r build",
+    "dev": "pnpm -r dev",
+    "type-check": "pnpm -r type-check"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}

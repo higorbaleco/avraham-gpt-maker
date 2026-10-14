@@ -1,0 +1,36 @@
+{
+  "name": "@gpt-maker/web",
+  "version": "0.1.0",
+  "description": "Next.js BFF + UI for GPT Maker Dashboard",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint src --max-warnings 0",
+    "format": "prettier --write src",
+    "type-check": "tsc --noEmit",
+    "test": "vitest",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "next": "^14.0.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "next-auth": "^4.24.10",
+    "zod": "^3.22.4",
+    "@gpt-maker/contracts": "workspace:*",
+    "@gpt-maker/ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "@playwright/test": "^1.40.1",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.0"
+  }
+}

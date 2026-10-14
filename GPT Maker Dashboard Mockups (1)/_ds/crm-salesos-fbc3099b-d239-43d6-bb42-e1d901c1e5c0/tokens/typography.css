@@ -1,0 +1,14 @@
+:root{
+  --font-ui:'Space Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-display:'Plus Jakarta Sans','Space Grotesk',system-ui,sans-serif;
+  --font-icon:'Material Symbols Outlined';
+  /* Escala de produto: tamanho / altura de linha */
+  --fs-page-title:24px;--lh-page-title:32px;
+  --fs-section:16px;--lh-section:24px;
+  --fs-body:14px;--lh-body:20px;
+  --fs-caption:12px;--lh-caption:16px;
+  --fs-label:11px;--lh-label:16px;--ls-label:.08em;
+  --fs-kpi:32px;--lh-kpi:36px;
+  --fs-display:48px;--lh-display:52px;
+  --fw-regular:400;/* @kind font */--fw-medium:500;/* @kind font */--fw-semibold:600;/* @kind font */--fw-bold:700;/* @kind font */
+}

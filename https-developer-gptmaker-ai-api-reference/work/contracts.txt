@@ -1,0 +1,431 @@
+GET /v2/workspaces
+Lista os workspaces da conta
+params []
+body []
+response ['array<Workspace>']
+
+GET /v2/workspace/{workspaceId}/credits
+Lista a quantidade de crédito disponível na conta.
+params [('workspaceId', 'path', True)]
+body []
+response ['Credits']
+
+GET /v2/workspace/{workspaceId}/agents
+Lista os agentes disponíveis nesse workspace
+params [('workspaceId', 'path', True), ('page', 'query', False), ('pageSize', 'query', False), ('query', 'query', False)]
+body []
+response ['array<Assistant>']
+
+POST /v2/workspace/{workspaceId}/agents
+Cria um novo agente no workspace
+params [('workspaceId', 'path', True)]
+body ['NewAssistant']
+response ['Assistant']
+
+PUT /v2/agent/{agentId}
+Atualiza os detalhes de um agente existente
+params [('agentId', 'path', True)]
+body ['NewAssistant']
+response ['Assistant']
+
+GET /v2/agent/{agentId}
+Busca dados do agente por ID
+params [('agentId', 'path', True)]
+body []
+response ['Assistant']
+
+DELETE /v2/agent/{agentId}
+Remover agente
+params [('agentId', 'path', True)]
+body []
+response ['success']
+
+PUT /v2/agent/{agentId}/inactive
+Inativa um agente existente
+params [('agentId', 'path', True)]
+body []
+response ['success']
+
+PUT /v2/agent/{agentId}/active
+Ativa um agente existente
+params [('agentId', 'path', True)]
+body []
+response ['success']
+
+GET /v2/agent/{agentId}/settings
+Obtém as configurações de um agente existente
+params [('agentId', 'path', True)]
+body []
+response ["prefferModel=['GPT_5_6_SOL', 'GPT_5_6_TERRA', 'GPT_5_6_LUNA', 'GPT_5_5', 'GPT_5_4', 'GPT_5_4_MINI', 'GPT_5_2', 'GPT_5_1', 'GPT_5', 'GPT_5_MINI', 'GPT_4_1', 'GPT_4_1_MINI', 'OPEN_AI_O4_MINI', 'OPEN_AI_O3', 'OPEN_AI_O3_MINI', 'OPEN_AI_O1', 'GPT_4_O', 'GPT_4_O_MINI', 'GPT_4', 'CLAUDE_5_SONNET', 'CLAUDE_4_6_SONNET', 'CLAUDE_4_5_SONNET', 'CLAUDE_4_5_HAIKU', 'CLAUDE_3_7_SONNET', 'CLAUDE_3_5_SONNET', 'CLAUDE_3_5_HAIKU', 'DEEPINFRA_LLAMA3_3', 'QWEN_2_5_MAX', 'DEEPSEEK_V4_PRO', 'DEEPSEEK_V4_FLASH', 'DEEPSEEK_CHAT', 'SABIA_3_1', 'SABIA_3'], timezone, enabledHumanTransfer, enabledReminder, splitMessages, enabledEmoji, limitSubjects, messageGroupingTime=['NO_GROUP', 'FIVE_SEC', 'TEN_SEC', 'THIRD_SEC', 'ONE_MINUTE'], maxDailyMessages, maxDailyMessagesLimitAction=['TEMP_BLOCK_30S', 'TEMP_BLOCK_5M', 'TEMP_BLOCK_10M', 'TEMP_BLOCK_30M', 'TEMP_BLOCK_1H', 'BLOCK', 'TRANSFER'], knowledgeByFunction, onLackKnowLedge"]
+
+PUT /v2/agent/{agentId}/settings
+Atualiza as configurações de um agente existente
+params [('agentId', 'path', True)]
+body ["prefferModel=['GPT_5_6_SOL', 'GPT_5_6_TERRA', 'GPT_5_6_LUNA', 'GPT_5_5', 'GPT_5_4', 'GPT_5_4_MINI', 'GPT_5_2', 'GPT_5_1', 'GPT_5', 'GPT_5_MINI', 'GPT_4_1', 'GPT_4_1_MINI', 'OPEN_AI_O4_MINI', 'OPEN_AI_O3', 'OPEN_AI_O3_MINI', 'OPEN_AI_O1', 'GPT_4_O', 'GPT_4_O_MINI', 'GPT_4', 'CLAUDE_5_SONNET', 'CLAUDE_4_6_SONNET', 'CLAUDE_4_5_SONNET', 'CLAUDE_4_5_HAIKU', 'CLAUDE_3_7_SONNET', 'CLAUDE_3_5_SONNET', 'CLAUDE_3_5_HAIKU', 'DEEPINFRA_LLAMA3_3', 'QWEN_2_5_MAX', 'DEEPSEEK_V4_PRO', 'DEEPSEEK_V4_FLASH', 'DEEPSEEK_CHAT', 'SABIA_3_1', 'SABIA_3'], timezone, enabledHumanTransfer, enabledReminder, splitMessages, enabledEmoji, limitSubjects, messageGroupingTime=['NO_GROUP', 'FIVE_SEC', 'TEN_SEC', 'THIRD_SEC', 'ONE_MINUTE'], signMessages, maxDailyMessages, maxDailyMessagesLimitAction=['TEMP_BLOCK_30S', 'TEMP_BLOCK_5M', 'TEMP_BLOCK_10M', 'TEMP_BLOCK_30M', 'TEMP_BLOCK_1H', 'BLOCK', 'TRANSFER'], knowledgeByFunction, onLackKnowLedge"]
+response ['success']
+
+GET /v2/agent/{agentId}/webhooks
+Obtém os webhooks configurados em um agente
+params [('agentId', 'path', True)]
+body []
+response ['onNewMessage, onLackKnowLedge, onTransfer, onFirstInteraction, onStartInteraction, onFinishInteraction, onCreateEvent, onCancelEvent']
+
+PUT /v2/agent/{agentId}/webhooks
+Atualiza os webhooks de um agente
+params [('agentId', 'path', True)]
+body ['onNewMessage, onLackKnowLedge, onTransfer, onFirstInteraction, onStartInteraction, onFinishInteraction, onCreateEvent, onCancelEvent']
+response ['success']
+
+GET /v2/agent/{agentId}/trainings
+Lista os treinamentos do agente
+params [('agentId', 'path', True), ('page', 'query', False), ('pageSize', 'query', False), ('type', 'query', True), ('query', 'query', False)]
+body []
+response [': array<TextTraining> | : array<WebsiteTraining> | : array<VideoTraining> | : array<DocumentTraining>']
+
+POST /v2/agent/{agentId}/trainings
+Adiciona um novo treinamento ao agente
+params [('agentId', 'path', True)]
+body ["Texto: type=['TEXT'], text, image, callbackUrl | Website: type=['WEBSITE'], website, trainingSubPages=['DISABLED', 'ACTIVE'], trainingInterval=['THIRTY_SECONDS', 'NEVER', 'ONE_HOUR', 'FOUR_HOUR', 'EIGHT_HOUR', 'TWELVE_HOUR', 'ONE_DAY', 'ONE_WEEK', 'ONE_MONTH'], callbackUrl | Vídeo: type=['VIDEO'], video, callbackUrl | Documento: type=['DOCUMENT'], documentUrl, documentName, documentMimetype, callbackUrl"]
+response ['success']
+
+PUT /v2/training/{trainingId}
+Atualiza um treinamento ao agente. Atualmente só é possível atualizar treinamentos de texto, para os demais treinamentos, é necessário remover e adicionar novamente.
+params [('trainingId', 'path', True)]
+body [": type=['TEXT'], text, image"]
+response ['success']
+
+DELETE /v2/training/{trainingId}
+Deleta um treinamento existente
+params [('trainingId', 'path', True)]
+body []
+response ['success']
+
+GET /v2/custom-field/workspace/{workspaceId}
+Lista os campos customizados
+params [('workspaceId', 'path', True), ('page', 'query', False), ('pageSize', 'query', False), ('query', 'query', False)]
+body []
+response ["id, name, jsonName, description, createdAt, updatedAt, type=['STRING', 'DATE', 'DATE_TIME', 'NUMBER', 'BOOLEAN', 'MONEY'], archived"]
+
+POST /v2/custom-field/workspace/{workspaceId}
+Cria um novo campo personalizado
+params [('workspaceId', 'path', True)]
+body ["id, name, jsonName, description, createdAt, updatedAt, type=['STRING', 'DATE', 'DATE_TIME', 'NUMBER', 'BOOLEAN', 'MONEY'], appliesTo!=['CONTACT', 'DEAL'], archived"]
+response ["id, name, jsonName, description, createdAt, updatedAt, type=['STRING', 'DATE', 'DATE_TIME', 'NUMBER', 'BOOLEAN', 'MONEY']"]
+
+PUT /v2/custom-field/{customfieldId}
+ Atualiza um campo customizado existente. O campo é identificado pelo seu ID.
+params [('customfieldId', 'path', True)]
+body [": id, name, description, type=['STRING', 'DATE', 'DATE_TIME', 'NUMBER', 'BOOLEAN', 'MONEY'], jsonName"]
+response []
+
+PUT /v2/custom-field/toggle-archive/{customfieldId}
+ Atualiza o status de arquivamento de um campo customizado existente. O campo é identificado pelo seu ID e o novo status é passado como parâmetro de query.
+params [('customfieldId', 'path', True), ('archived', 'query', False)]
+body []
+response []
+
+GET /v2/agent/{agentId}/idle-actions
+Listar as ações de inatividade
+params [('agentId', 'path', True)]
+body []
+response ['actions, finishAction']
+
+POST /v2/agent/{agentId}/idle-actions
+Cria uma nova ação de inatividade
+params [('agentId', 'path', True)]
+body ['actions, finishAction']
+response ['actions, finishAction']
+
+PUT /v2/agent/{agentId}/idle-actions
+Atualizar uma nova ação de inatividade
+params [('agentId', 'path', True)]
+body ['actions, finishAction']
+response ['actions, finishAction']
+
+DELETE /v2/agent/{agentId}/idle-actions
+Deleta uma ação existente
+params [('agentId', 'path', True)]
+body []
+response []
+
+GET /v2/agent/{id}/transfer-rules
+Lista as regras de transferência
+params [('agentId', 'path', True)]
+body []
+response ["id, createdAt, instructions, returnOnFinish, type=['HUMAN', 'AGENT'], agentId, userId"]
+
+POST /v2/agent/{agentId}/transfer-rules
+Cria uma nova regra de transferência para o agente especificado
+params [('agentId', 'path', True)]
+body ["instructions, returnOnFinish, type=['HUMAN', 'AGENT'], userId, agentId"]
+response ["id, createdAt, instructions, returnOnFinish, type=['HUMAN', 'AGENT'], agentId, userId"]
+
+PUT /v2/agent/{agentId}/transfer-rules/{transfer-rule-id}
+ Atualiza uma regra de transferência existente
+params [('agentId', 'path', True), ('transfer-rule-id', 'path', True)]
+body [": instructions, returnOnFinish, type=['HUMAN', 'AGENT'], agentId, userId"]
+response []
+
+DELETE /v2/agent/{agentId}/transfer-rules/{transfer-rule-id}
+ Deleta uma regra de transferência existente
+params [('agentId', 'path', True), ('transfer-rule-id', 'path', True)]
+body []
+response []
+
+GET /v2/mcp/{mcpId}/tools
+Lista as ferramentas de um MCP específico
+params [('mcpId', 'path', True)]
+body []
+response ['array<id, tenant, tenantOwner, createdAt, updatedAt, integrationId, agentId, active, name, description, inputSchema>']
+
+GET /v2/mcp/{mcpId}/tool/{toolId}/active
+Ativa determinada ferramenta do MCP
+params [('mcpId', 'path', True), ('toolId', 'path', True)]
+body []
+response ['success']
+
+GET /v2/mcp/{mcpId}/tool/{toolId}/inactive
+Inativa determinada ferramenta do MCP
+params [('mcpId', 'path', True), ('toolId', 'path', True)]
+body []
+response ['success']
+
+GET /v2/mcp/{mcpId}/sync-tools
+Sincroniza ferramentas do MCP
+params [('mcpId', 'path', True)]
+body []
+response ['success']
+
+POST /v2/agent/{agentId}/mcp/add
+Permite criar uma conexão MCP
+params [('mcpId', 'path', True)]
+body ["name!, description!, mcpUrl!, urlType!=['SSE', 'STREAMABLEHTTP'], authType!=['NO_OAUTH', 'OAUTH', 'HEADERS'], headers"]
+response ['connected, success, id, url']
+
+POST /v2/mcp/connect
+Permite conectar a uma conexão MCP caso for OAUTH
+params []
+body ['code!, state!']
+response ['agentId, success, mcpId']
+
+DELETE /v2/mcp/{mcpId}
+Deleta um MCP existente
+params [('mcpId', 'path', True)]
+body []
+response ['success']
+
+GET /v2/agent/{agentId}/intentions
+Lista as intenções do agente
+params [('agentId', 'path', True), ('page', 'query', False), ('pageSize', 'query', False), ('query', 'query', False)]
+body []
+response ['array<Intention>']
+
+POST /v2/agent/{agentId}/intentions
+Adiciona uma nova intenção ao agente
+params [('agentId', 'path', True)]
+body ["description!, details, instructions, fields, type!=['WEBHOOK', 'INSTRUCTIONS'], httpMethod!=['GET', 'POST'], url!, headers, params, variables, requestBody, autoGenerateParams!, autoGenerateBody!"]
+response ['success']
+
+PUT /v2/intention/{intentionId}
+Atualiza os dados de uma intenção
+params [('intentionId', 'path', True)]
+body [': Intention']
+response ['success']
+
+DELETE /v2/intention/{intentionId}
+Deleta uma intenção existente
+params [('intentionId', 'path', True)]
+body []
+response ['success']
+
+GET /v2/workspace/{workspaceId}/chats
+Lista os chats do workspace
+params [('workspaceId', 'path', True), ('agentId', 'query', False), ('page', 'query', False), ('pageSize', 'query', False), ('query', 'query', False)]
+body []
+response ['array<Chat>']
+
+DELETE /v2/chat/{chatId}
+Deletar um chat
+params [('chatId', 'path', True)]
+body []
+response ['success']
+
+GET /v2/chat/{chatId}/messages
+Lista as mensagens de um chat
+params [('chatId', 'path', True), ('page', 'query', False), ('pageSize', 'query', False)]
+body []
+response ['array<Message>']
+
+DELETE /v2/chat/{chatId}/messages
+Limpar mensagens
+params [('chatId', 'path', True)]
+body []
+response ['success']
+
+PUT /v2/chat/{chatId}/start-human
+Marcar que um humano vai assumir o atendimento, IA para de responder o chat.
+params [('chatId', 'path', True)]
+body []
+response ['success']
+
+PUT /v2/chat/{chatId}/stop-human
+Encerrar atendimento humano, isso fará que a proxima interação do cliente, o agente volte a responder.
+params [('chatId', 'path', True)]
+body []
+response ['success']
+
+POST /v2/chat/{chatId}/send-message
+Envia uma nova mensagem para o chat
+params [('chatId', 'path', True)]
+body ['Texto: message!, replyMessageId | Imagem: message, image | Áudio: audio | Vídeo: video | Documento: document, documentName, documentMimetype']
+response ['success']
+
+DELETE /v2/chat/{chatId}/message/{messageId}
+Remove uma mensagem de um canal específico. Esta funcionalidade está disponível apenas para os canais Z-API, Telegram e Widget.
+params [('chatId', 'path', True), ('messageId', 'path', True)]
+body []
+response ['success, status']
+
+PUT /v2/chat/{chatId}/message/{messageId}
+Edita uma mensagem em um canal específico. Esta funcionalidade está disponível apenas para os canais Z-API, Telegram e Widget, pois nem todos os tipos de canal permitem edição de mensagens.
+params [('chatId', 'path', True), ('messageId', 'path', True)]
+body ['message']
+response ['success, status']
+
+GET /v2/workspace/{workspaceId}/search
+Busca todos os contatos
+params [('workspaceId', 'path', True), ('page', 'query', False), ('pageSize', 'query', False)]
+body []
+response ['birthday, gender, phone, jobTitle, name, recipient, id, picture, email']
+
+GET /v2/workspace/{workspaceId}/contact/{contactId}
+Buscar um contato em específico
+params []
+body []
+response ['id, name, birthday, gender, picture, phone, email, jobTitle, recipient, customFieldValues']
+
+PUT /v2/contact/{contactId}/update
+Atualiza os dados de um contato em específico
+params []
+body ['id, name, birthday, gender, picture, phone, email, jobTitle, recipient, customFieldValues']
+response ['id, name, birthday, gender, picture, phone, email, jobTitle, recipient, customFieldValues']
+
+DELETE /v2/contact/{contactId}/delete
+Deleta um contato em específico
+params [('contactId', 'path', True)]
+body []
+response []
+
+POST /v2/agent/{agentId}/conversation
+Permite conversar com o agente via API enviando texto, imagem ou áudio
+params [('agentId', 'path', True)]
+body ['Texto: contextId!, prompt!, callbackUrl, onFinishCallback, chatName, chatPicture, phone | Imagem: contextId!, prompt!, image!, callbackUrl, onFinishCallback, chatName, chatPicture, phone | Áudio: contextId!, audio!, callbackUrl, onFinishCallback, chatName, chatPicture, phone | Vídeo: contextId!, video!, prompt, callbackUrl, onFinishCallback, chatName, chatPicture, phone | Documento: contextId!, document!, prompt, callbackUrl, onFinishCallback, chatName, chatPicture, phone']
+response ['message, images, audios, documents']
+
+POST /v2/agent/{agentId}/add-message
+Permite adicionar uma mensagem ao contexto da conversa, muito usado para quando fizer um disparo ativo por outras ferramentas e precisa adicionar essa mensagem ao contexto da conversa.
+params [('agentId', 'path', True)]
+body ['Texto: contextId!, prompt!, role | Imagem: contextId!, prompt!, image!, role | Áudio: contextId!, audio!, role | Vídeo: contextId!, video!, prompt, role | Documento: contextId!, document!, prompt, role']
+response ['message, images, audios']
+
+GET /v2/agent/{id}/list-behavior-history
+Este endpoint retorna a lista de registros do histórico de comportamentos do agente, permitindo consultar as alterações realizadas ao longo do tempo.
+params [('id', 'path', True), ('page', 'query', True), ('pageSize', 'query', True)]
+body []
+response ['userLogin!, createdAt!, userPicture!, id!, userName!, userId!, behaviorText!']
+
+GET /v2/workspace/{workspaceId}/channels
+Este é o endpoint mais atualizado para listagem de canais, onde os canais são gerenciados separadamente dos agentes (desmembrados), refletindo a nova estrutura do sistema.
+params [('workspaceId', 'path', True), ('page', 'query', False), ('pageSize', 'query', False), ('query', 'query', False), ('agentId', 'query', False)]
+body []
+response ['data, count']
+
+POST /v2/workspace/{workspaceId}/create-channel
+Endpoint mais atualizado para criação de canais. Permite criar um canal de forma independente, sem necessidade de vinculá-lo a um agente.
+params [('workspaceId', 'path', True)]
+body ["name!, type=['Z_API', 'WHATSAPP', 'INSTAGRAM', 'CLOUD_API', 'TELEGRAM', 'WIDGET', 'MESSENGER', 'MERCADO_LIVRE', 'TWILIO_SMS'], agentId"]
+response ["assistantId!, workspace!, name!, id!, type!=['Z_API', 'WHATSAPP', 'INSTAGRAM', 'CLOUD_API', 'TELEGRAM', 'WIDGET', 'MESSENGER', 'MERCADO_LIVRE', 'TWILIO_SMS']"]
+
+PUT /v2/channel/{channelId}
+Atualiza as informações do canal, permitindo alterar o nome e vincular (ou trocar) o agente associado ao canal.
+params [('channelId', 'path', True)]
+body ['name!, agentId']
+response ['name, assistantId, type, workspace']
+
+DELETE /v2/channel/{channelId}
+Remover canal
+params [('channelId', 'path', True)]
+body []
+response ['success']
+
+GET /v2/channel/{channelId}/qr-code
+Pega qr-code para conexão.
+params [('channelId', 'path', True)]
+body []
+response ['Quando não está conectado: value | Quando está conectado: connected']
+
+GET /v2/channel/{channelId}/config
+Retorna as configurações de um canal específico a partir do seu ID, permitindo consultar todos os detalhes e parâmetros cadastrados para esse canal.
+params [('channelId', 'path', True)]
+body []
+response ["Configuração Z_API: id, tenant, audioAction, startTrigger, endTrigger, enabledTyping, enableGroupsResponse, replyGroupsType, enablePrivateChatResponse, callRejectAuto, callRejectMessage, takeOutsideService, takeOutsideServiceMember, takeOutsideServiceCommand, takeOutsideServiceMessage, takeOutsideServiceCommandReturn, takeOutsideServiceReturnMessage, waitingMessageEnabled, waitingMessageText, type=['Z_API'] | Configuração WHATSAPP: id, tenant, audioAction, startTrigger, endTrigger, enabledTyping, type=['WHATSAPP'] | Configuração INSTAGRAM: id, tenant, audioAction, startTrigger, endTrigger, notReactInstagramStories, takeOutsideService, takeOutsideServiceMember, takeOutsideServiceCommand, takeOutsideServiceMessage, takeOutsideServiceCommandReturn, takeOutsideServiceReturnMessage, commentsReplyEnabled, commentsReplyAllEnabled, commentsReplyAllInstruction, commentsCallDirectInstruction | Configuração básica (TWILIO_SMS, TELEGRAM, MERCADO_LIVRE, MESSENGER): id, tenant, audioAction, startTrigger, endTrigger"]
+
+PUT /v2/channel/{id}/config
+Atualiza as configurações de um canal específico
+params [('id', 'path', True)]
+body ['id, tenant, audioAction, startTrigger, endTrigger']
+response ["Configuração Z_API: id, tenant, audioAction, startTrigger, endTrigger, enabledTyping, enableGroupsResponse, replyGroupsType, enablePrivateChatResponse, callRejectAuto, callRejectMessage, takeOutsideService, takeOutsideServiceMember, takeOutsideServiceCommand, takeOutsideServiceMessage, takeOutsideServiceCommandReturn, takeOutsideServiceReturnMessage, waitingMessageEnabled, waitingMessageText, type=['Z_API'] | Configuração WHATSAPP: id, tenant, audioAction, startTrigger, endTrigger, enabledTyping, type=['WHATSAPP'] | Configuração INSTAGRAM: id, tenant, audioAction, startTrigger, endTrigger, notReactInstagramStories, takeOutsideService, takeOutsideServiceMember, takeOutsideServiceCommand, takeOutsideServiceMessage, takeOutsideServiceCommandReturn, takeOutsideServiceReturnMessage, commentsReplyEnabled, commentsReplyAllEnabled, commentsReplyAllInstruction, commentsCallDirectInstruction | Configuração básica (TWILIO_SMS, TELEGRAM, MERCADO_LIVRE, MESSENGER): id, tenant, audioAction, startTrigger, endTrigger"]
+
+PUT /v2/channel/{channelId}/widget-settings
+Atualiza as configurações do canal do tipo widget
+params [('channelId', 'path', True)]
+body ['isPublic, initialMessage, origins, suggestMessages, headerBackground, headerColor, messageUserBackground, buttonBackground']
+response ['success']
+
+GET /v2/channel/{channelId}/widget-links
+Pega os links dos scripts do widget para injetar no site
+params [('channelId', 'path', True)]
+body []
+response ['float, iframe']
+
+GET /v2/agent/{agentId}/search
+Lista os canais de um agente
+params [('agentId', 'path', True), ('page', 'query', False), ('pageSize', 'query', False), ('query', 'query', False)]
+body []
+response ['data, count']
+
+GET /v2/agent/{agentId}/credits-spent
+Retorna o consumo de créditos por agente dentro de um período
+params [('agentId', 'path', True), ('year', 'query', False), ('month', 'query', False), ('day', 'query', False)]
+body []
+response ['total, data']
+
+POST /v2/channel/{channelId}/start-conversation
+Iniciar conversa
+params [('channelId', 'path', True)]
+body ['Mensagem de Texto: phone!, message! | Imagem: phone!, image! | Vídeo: phone!, video! | Áudio: phone!, audio! | Documento: phone!, document!, documentName!, documentMimetype!']
+response ['success']
+
+GET /v2/workspace/{workspaceId}/interactions
+Lista os atendimentos de um workspace, uma mesma conversa com seu cliente pode gerar vários atendimentos, pois o cliente pode retornar várias vezes, essa api lista todos os atendimentos, quando iniciou, quando finalizou, status etc..
+params [('workspaceId', 'path', True), ('agentId', 'query', False), ('page', 'query', False), ('pageSize', 'query', False)]
+body []
+response ['array<Interaction>']
+
+GET /v2/interaction/{interactionId}/messages
+Lista as mensagens de um atendimento especifico, muitos clientes usam dessa API para gerar resumos ou fazer análises sobre o atendimento.
+params [('interactionId', 'path', True)]
+body []
+response ['array<Message>']
+
+DELETE /v2/interaction/{id}
+Deleta um atendimento da listagem
+params [('id', 'path', True)]
+body []
+response ['deleted!']
+
+POST /v2/workspace/{workspaceId}/export
+Exporta os atendimentos da listagem, permitindo exportação completa ou filtrada por propriedades específicas em arquivo .csv
+params [('workspaceId', 'path', True)]
+body ['Exportar todos:  | Exportar por página: page, pagesize']
+response ['contactName!, channelType!, status!, agentName!, startAt!, resolvedAt!, duration!, protocol!']

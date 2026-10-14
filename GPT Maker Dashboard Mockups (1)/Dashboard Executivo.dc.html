@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="_ds/crm-salesos-fbc3099b-d239-43d6-bb42-e1d901c1e5c0/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/crm-salesos-fbc3099b-d239-43d6-bb42-e1d901c1e5c0/tokens/colors.css">
+<link rel="stylesheet" href="_ds/crm-salesos-fbc3099b-d239-43d6-bb42-e1d901c1e5c0/tokens/typography.css">
+<link rel="stylesheet" href="_ds/crm-salesos-fbc3099b-d239-43d6-bb42-e1d901c1e5c0/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/crm-salesos-fbc3099b-d239-43d6-bb42-e1d901c1e5c0/tokens/base.css">
+<link rel="stylesheet" href="_ds/crm-salesos-fbc3099b-d239-43d6-bb42-e1d901c1e5c0/components/components.css">
+<link rel="stylesheet" href="_ds/crm-salesos-fbc3099b-d239-43d6-bb42-e1d901c1e5c0/styles.css">
+<script src="_ds/crm-salesos-fbc3099b-d239-43d6-bb42-e1d901c1e5c0/_ds_bundle.js"></script>
+<style>@keyframes sx-grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}body{margin:0}.sx-kpi__ctx{white-space:normal!important}.kgrid>div{display:flex;min-width:0}.kgrid .sx-kpi{flex:1 1 auto;width:100%;min-width:0;height:100%;box-sizing:border-box}.kgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-4)}@media (max-width:1100px){.kgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:600px){.kgrid{grid-template-columns:minmax(0,1fr)}}.two{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:var(--sp-4);margin-top:var(--sp-4)}.fl{display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center}.row{display:flex;justify-content:space-between;gap:var(--sp-3);align-items:center;padding:12px 0;border-top:1px solid var(--line);font-size:14px}@media (max-width:899px){.pg{padding:var(--sp-4) var(--sp-4) var(--sp-8)!important}.two{grid-template-columns:1fr!important}}@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important}}</style>
+</helmet>
+<div class="pg" style="min-height:100vh;background:var(--bg);padding:var(--sp-6) var(--sp-8) var(--sp-8);color:var(--t1);box-sizing:border-box">
+  <header class="sx-page-header">
+    <div class="sx-page-header__row">
+      <div class="fl"><h1 class="sx-page-header__title" style="white-space:nowrap;flex-shrink:0;margin:0">Painel executivo</h1><span style="font-size:12px;padding:4px 10px;border-radius:999px;background:var(--neutral-soft);color:var(--t2);font-weight:600;white-space:nowrap;flex-shrink:0">Dados de exemplo</span></div>
+      <div class="sx-page-header__actions"><x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.Button" variant="secondary" size="sm" onClick="{{ toggleCompare }}" hint-size="auto,32px">{{ compareLabel }}</x-import><x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.Button" icon="download" hint-size="auto,40px">Exportar</x-import></div>
+    </div>
+    <p class="sx-page-header__desc">{{ headDesc }}</p>
+  </header>
+
+  <div style="margin-bottom:var(--sp-4);overflow-x:auto"><x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.Tabs" dc-props="{{ viewTabsProps }}" hint-size="100%,44px"></x-import></div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:var(--sp-3);margin-bottom:var(--sp-4)">
+    <x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.Select" label="Período" options="{{ periodOpts }}" value="{{ period }}" onChange="{{ setPeriod }}" hint-size="100%,64px"></x-import>
+    <x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.Select" label="Agente" options="{{ agentOpts }}" value="{{ agent }}" onChange="{{ setAgent }}" hint-size="100%,64px"></x-import>
+    <x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.Select" label="Canal" options="{{ channelOpts }}" value="{{ channel }}" onChange="{{ setChannel }}" hint-size="100%,64px"></x-import>
+    <x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.Select" label="Objetivo do agente" options="{{ objOpts }}" value="{{ objective }}" onChange="{{ setObjective }}" hint-size="100%,64px"></x-import>
+  </div>
+
+  <sc-if value="{{ bannerOn }}" hint-placeholder-val="{{ false }}"><div class="sx-card" style="margin-bottom:var(--sp-4);display:flex;gap:var(--sp-3);align-items:center;font-size:14px;color:var(--t2)"><x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.Icon" name="info" hint-size="20px,20px"></x-import><span>{{ bannerText }}</span></div></sc-if>
+
+  <sc-if value="{{ dash }}" hint-placeholder-val="{{ true }}">
+    <sc-if value="{{ isLoad }}" hint-placeholder-val="{{ false }}">
+      <div class="kgrid"><sc-for list="{{ skel }}" as="x" hint-placeholder-count="6"><div class="sx-skel" style="height:132px;border-radius:var(--r-card)"></div></sc-for></div>
+      <div class="two"><div class="sx-skel" style="height:320px;border-radius:var(--r-card)"></div><div class="sx-skel" style="height:320px;border-radius:var(--r-card)"></div></div>
+    </sc-if>
+
+    <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+      <div class="sx-card sx-empty"><span class="sx-empty__icon"><x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.Icon" name="search_off" hint-size="24px,24px"></x-import></span><div class="sx-empty__title">Nenhum atendimento no período</div><div class="sx-empty__desc">Ajuste o período ou aguarde novos atendimentos. Os indicadores aparecem assim que houver dados.</div><div class="sx-empty__actions"><x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.Button" variant="primary" onClick="{{ emptyFix }}" hint-size="auto,40px">Ver últimos 90 dias</x-import></div></div>
+    </sc-if>
+
+    <sc-if value="{{ isErr }}" hint-placeholder-val="{{ false }}">
+      <div class="sx-card sx-empty" data-kind="error"><span class="sx-empty__icon"><x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.Icon" name="error" hint-size="24px,24px"></x-import></span><div class="sx-empty__title">Não foi possível carregar os indicadores</div><div class="sx-empty__desc">Verifique a conexão e tente novamente. Nenhum dado foi alterado.</div><div class="sx-empty__actions"><x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.Button" variant="primary" onClick="{{ retry }}" hint-size="auto,40px">Tentar novamente</x-import></div></div>
+    </sc-if>
+
+    <sc-if value="{{ isData }}" hint-placeholder-val="{{ false }}">
+      <div class="kgrid">
+        <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="6"><div style="{{ k.wrap }}"><x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.KpiCard" label="{{ k.label }}" value="{{ k.value }}" context="{{ k.ctx }}" onClick="{{ k.drill }}" hint-size="100%,132px"></x-import></div></sc-for>
+      </div>
+
+      <sc-if value="{{ hasDrill }}" hint-placeholder-val="{{ false }}">
+        <div class="sx-card" style="margin-top:var(--sp-4)">
+          <div class="fl" style="justify-content:space-between;margin-bottom:var(--sp-2)"><b style="font-size:16px">{{ drillTitle }}</b><x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.Button" size="sm" onClick="{{ closeDrill }}" hint-size="auto,32px">Fechar</x-import></div>
+          <sc-for list="{{ drillRows }}" as="r" hint-placeholder-count="3"><div class="row"><span style="color:var(--t2)">{{ r.a }}</span><b style="font-variant-numeric:tabular-nums">{{ r.b }}</b></div></sc-for>
+          <div style="font-size:12px;color:var(--t3);margin-top:var(--sp-2);line-height:18px">{{ drillNote }}</div>
+        </div>
+      </sc-if>
+
+      <div class="two">
+        <x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.ChartContainer" title="Atendimentos por dia" subtitle="{{ evoSub }}" legend="{{ evoLegend }}" insight="{{ dayInsight }}" hint-size="100%,320px">
+          <sc-if value="{{ isIns }}" hint-placeholder-val="{{ false }}"><div style="padding:56px 0;text-align:center;color:var(--t3);font-size:14px">Dados insuficientes para comparar períodos. Aguarde 7 dias de histórico.</div></sc-if>
+          <sc-if value="{{ notIns }}" hint-placeholder-val="{{ true }}"><div onMouseMove="{{ evoMove }}" onMouseLeave="{{ evoLeave }}" style="cursor:crosshair"><x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.AreaChart" data="{{ evoData }}" compare="{{ evoPrev }}" highlightIndex="{{ day }}" format="{{ fmtVal }}" height="260" hint-size="100%,260px"></x-import></div></sc-if>
+        </x-import>
+        <x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.ChartContainer" title="Funil de resultados" subtitle="{{ funSub }}" hint-size="100%,320px">
+          <div style="display:flex;flex-direction:column;gap:var(--sp-3)">
+            <x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.FunnelChart" stages="{{ funStages }}" hint-size="100%,260px"></x-import>
+            <div style="font-size:12px;color:var(--t3);line-height:18px">{{ funNote }}</div>
+          </div>
+        </x-import>
+      </div>
+
+      <div class="sx-card" style="margin-top:var(--sp-4)">
+        <div style="font-weight:600;font-size:var(--fs-section)">Atenção necessária</div>
+        <div style="font-size:13px;color:var(--t3);margin-bottom:var(--sp-3)">Abra cada item para ver os registros relacionados.</div>
+        <sc-for list="{{ alerts }}" as="a" hint-placeholder-count="3"><button type="button" onClick="{{ a.open }}" style="{{ a.style }}"><span style="min-width:0"><b style="display:block;font-size:14px;font-weight:600">{{ a.title }}</b><span style="font-size:12px;color:var(--t3)">{{ a.desc }}</span></span><span style="color:var(--accent-fg);font-size:13px;font-weight:600;white-space:nowrap">Ver detalhes</span></button></sc-for>
+      </div>
+
+      <sc-if value="{{ hasAlert }}" hint-placeholder-val="{{ false }}">
+        <div class="sx-card" style="margin-top:var(--sp-4)">
+          <div class="fl" style="justify-content:space-between;margin-bottom:var(--sp-2)"><b style="font-size:16px">{{ alertTitle }}</b><x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.Button" size="sm" onClick="{{ closeAlert }}" hint-size="auto,32px">Fechar</x-import></div>
+          <sc-for list="{{ alertRows }}" as="r" hint-placeholder-count="3"><div class="row"><div style="min-width:0"><div style="font-weight:600">{{ r.a }}</div><div style="font-size:12px;color:var(--t3)">{{ r.b }}</div></div><span style="font-size:12px;color:var(--t3);white-space:nowrap">{{ r.c }}</span></div></sc-for>
+          <div style="font-size:12px;color:var(--t3);margin-top:var(--sp-2)">{{ alertNote }}</div>
+        </div>
+      </sc-if>
+    </sc-if>
+  </sc-if>
+
+  <sc-if value="{{ isAn }}" hint-placeholder-val="{{ false }}">
+    <div style="font-size:14px;color:var(--t2);margin-bottom:var(--sp-4);max-width:72ch">Indicadores secundários. Ficam fora da primeira dobra do painel para não competir com os seis indicadores principais.</div>
+    <div class="kgrid">
+      <sc-for list="{{ secKpis }}" as="k" hint-placeholder-count="7"><x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.KpiCard" label="{{ k.label }}" value="{{ k.value }}" context="{{ k.ctx }}" hint-size="100%,132px"></x-import></sc-for>
+    </div>
+    <div class="two">
+      <x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.ChartContainer" title="Atendimentos por horário" subtitle="Volume por faixa de hora no período" insight="Pico entre 15h e 16h." hint-size="100%,300px">
+        <x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.BarChart" data="{{ hoursData }}" highlightIndex="{{ peakIdx }}" height="200" hint-size="100%,220px"></x-import>
+      </x-import>
+      <x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.ChartContainer" title="Atendimentos por canal" subtitle="Participação no período" hint-size="100%,300px">
+        <sc-for list="{{ chans }}" as="c" hint-placeholder-count="5"><div style="margin-bottom:var(--sp-3)"><div style="display:flex;justify-content:space-between;font-size:13px"><span>{{ c.label }}</span><b style="font-variant-numeric:tabular-nums">{{ c.v }} · {{ c.pct }}</b></div><div class="sx-progress"><i style="width:{{ c.pct }}"></i></div></div></sc-for>
+      </x-import>
+    </div>
+    <div class="two" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr)">
+      <x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.ChartContainer" title="Desempenho por agente" subtitle="Atendimentos e resolução pela IA" hint-size="100%,260px">
+        <sc-for list="{{ agents }}" as="g" hint-placeholder-count="3"><div class="row"><div><div style="font-weight:600">{{ g.n }}</div><div style="font-size:12px;color:var(--t3)">{{ g.v }} atendimentos</div></div><div style="text-align:right;font-variant-numeric:tabular-nums"><b>{{ g.ia }}</b><div style="font-size:12px;color:var(--t3)">resolvido pela IA</div></div></div></sc-for>
+      </x-import>
+      <x-import component-from-global-scope="AvrahamSalesOSDesignSystem_fbc309.ChartContainer" title="Principais assuntos" subtitle="Temas mais citados pelos clientes" hint-size="100%,260px">
+        <sc-for list="{{ topics }}" as="t" hint-placeholder-count="5"><div class="row"><span>{{ t.t }}</span><b style="font-variant-numeric:tabular-nums">{{ t.p }}</b></div></sc-for>
+      </x-import>
+    </div>
+    <div class="sx-card" style="margin-top:var(--sp-4);padding:0;overflow-x:auto">
+      <div style="padding:var(--sp-4) var(--sp-5);font-weight:600">Fontes e regras de cálculo</div>
+      <div style="min-width:640px">
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) minmax(0,1.4fr);gap:var(--sp-3);padding:8px var(--sp-5);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--t3)"><span>Indicador</span><span>Fonte</span><span>Limitação</span></div>
+        <sc-for list="{{ sources }}" as="s" hint-placeholder-count="6"><div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) minmax(0,1.4fr);gap:var(--sp-3);padding:12px var(--sp-5);border-top:1px solid var(--line);font-size:13px;align-items:start"><b style="font-weight:600">{{ s.k }}</b><span style="color:var(--t2)">{{ s.f }}</span><span style="color:var(--t3)">{{ s.l }}</span></div></sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <div class="sx-card fl" style="margin-top:var(--sp-6);justify-content:space-between">
+    <div><div style="font-weight:600;font-size:14px">Pré-visualização de estados</div><div style="font-size:12px;color:var(--t3)">Mostra como a tela se comporta em cada situação.</div></div>
+    <select class="sx-input" style="width:auto" value="{{ view }}" onChange="{{ setView }}" aria-label="Estado da tela"><option value="dados">Dados disponíveis</option><option value="carregando">Carregando</option><option value="vazio">Vazio</option><option value="erro">Erro</option><option value="semPermissao">Sem permissão (comercial)</option><option value="insuficiente">Dados insuficientes</option></select>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tab: 'dash', period: '30d', compare: true, agent: 'todos', channel: 'todos', objective: 'vendas', view: 'dados', drill: null, alert: null, day: null };
+  componentWillUnmount() { clearTimeout(this._t); }
+  goView(v) {
+    clearTimeout(this._t);
+    this.setState({ view: v, drill: null, alert: null });
+    if (v === 'carregando') this._t = setTimeout(() => this.setState({ view: 'dados' }), 1400);
+  }
+  renderVals() {
+    const s = this.state, R = v => Math.round(v), fmt = v => R(v).toLocaleString('pt-BR');
+    const N = 180, base = new Date(2026, 3, 13), all = [];
+    for (let i = 0; i < N; i++) all.push(Math.max(20, R(83 + 24 * Math.sin(i / 4.1) + 12 * Math.cos(i / 1.7) + (i % 7 === 5 ? -28 : 0) + i * 0.06)));
+    const n = s.period === '7d' ? 7 : s.period === '90d' ? 90 : 30;
+    const cur = all.slice(N - n), prev = all.slice(N - 2 * n, N - n);
+    const labels = cur.map((_, i) => new Date(base.getTime() + (N - n + i) * 864e5).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' }));
+    const sum = a => a.reduce((x, y) => x + y, 0), total = sum(cur), prevT = sum(prev), f = total / 2486;
+    const dv = (a, b) => { const d = (a / b - 1) * 100; return (d >= 0 ? '+' : '−') + Math.abs(d).toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + '%'; };
+    const isLoad = s.view === 'carregando', isEmpty = s.view === 'vazio', isErr = s.view === 'erro';
+    const isData = !isLoad && !isEmpty && !isErr, ins = s.view === 'insuficiente', noPerm = s.view === 'semPermissao';
+    const isAn = s.tab === 'analytics';
+    const PER = { '7d': 'últimos 7 dias', '30d': 'últimos 30 dias', '90d': 'últimos 90 dias' };
+    const feat = { vendas: 'leads', agendamentos: 'atend', suporte: 'resol', geral: 'atend' }[s.objective];
+    const DR = {
+      atend: { title: 'Atendimentos realizados por canal', rows: [['WhatsApp', fmt(total * 0.58)], ['Instagram', fmt(total * 0.21)], ['Widget do site', fmt(total * 0.12)], ['Outros', fmt(total * 0.09)]], note: 'Contagem de IDs únicos de atendimento iniciados no período.' },
+      resol: { title: 'Resolução pela IA por agente', rows: [['Sofia · vendas', '91%'], ['Carlos · suporte', '82%'], ['Financeiro · cobrança', '74%']], note: 'Atendimentos resolvidos sem transferência humana ÷ resolvidos elegíveis. Sessões abertas ficam fora do cálculo.' },
+      leads: { title: 'Leads qualificados', rows: [['Status', 'Integração pendente'], ['Fonte esperada', 'CRM ou eventos de qualificação']], note: 'Contatos únicos que atingiram os critérios de qualificação configurados.' },
+      opp: { title: 'Oportunidades geradas', rows: [['Status', 'Integração pendente'], ['Fonte esperada', 'Registros comerciais com status e origem']], note: 'Soma das oportunidades registradas no período. Pipeline não é receita recebida.' },
+      resp: { title: 'Tempo de 1ª resposta', rows: [['Mediana', '8 s'], ['Média', '14 s']], note: 'Diferença entre a primeira mensagem recebida e a primeira resposta válida.' },
+      transf: { title: 'Transferências humanas por motivo', rows: [['Falta de conhecimento', '38%'], ['Pedido do cliente', '34%'], ['Regra de preço', '28%']], note: 'Atendimentos com transferência humana ÷ atendimentos elegíveis iniciados no período.' }
+    };
+    const kd = [
+      { key: 'atend', label: 'Atendimentos realizados', value: fmt(total), ctx: s.compare ? dv(total, prevT) + ' vs. período anterior' : 'Período atual' },
+      { key: 'resol', label: 'Resolução pela IA', value: ins ? '—' : '87,3%', ctx: ins ? 'Menos de 7 dias de histórico' : '+4,2 p.p. vs. anterior' },
+      { key: 'leads', label: 'Leads qualificados', value: '—', ctx: noPerm ? 'Sem permissão para este indicador' : 'Aguardando integração com CRM' },
+      { key: 'opp', label: 'Oportunidades geradas', value: '—', ctx: noPerm ? 'Sem permissão para este indicador' : 'Aguardando integração com CRM' },
+      { key: 'resp', label: 'Tempo de 1ª resposta', value: ins ? '—' : '8 s', ctx: ins ? 'Menos de 7 dias de histórico' : '−32% vs. anterior' },
+      { key: 'transf', label: 'Transferências humanas', value: ins ? '—' : '12,7%', ctx: ins ? 'Menos de 7 dias de histórico' : '−4,2 p.p. vs. anterior' }
+    ];
+    const kpis = kd.map(k => ({ label: k.label, value: k.value, ctx: k.ctx, wrap: 'border-radius:var(--r-card);' + (feat === k.key ? 'box-shadow:0 0 0 2px var(--accent);' : ''), drill: () => this.setState({ drill: k.key, alert: null }) }));
+    const dd = s.drill ? DR[s.drill] : null;
+    const evoData = cur.map((v, i) => ({ label: labels[i], value: v }));
+    const evoPrev = s.compare ? prev.map(v => ({ value: v })) : undefined;
+    const fmtVal = v => fmt(v);
+    const evoMove = e => { const r = e.currentTarget.getBoundingClientRect(); const i = Math.round(Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)) * (n - 1)); if (i !== this.state.day) this.setState({ day: i }); };
+    const evoLeave = () => this.setState({ day: null });
+    const evoLegend = [{ label: 'Período atual', color: 'var(--accent)' }].concat(s.compare ? [{ label: 'Período anterior', color: 'var(--t4)' }] : []);
+    const dayInsight = s.day != null ? labels[s.day] + ': ' + fmt(cur[s.day]) + ' atendimentos' + (s.compare ? ', contra ' + fmt(prev[s.day]) + ' no período anterior.' : '.') : 'Passe o cursor sobre o gráfico para ver o detalhe do dia.';
+    const FUN = {
+      vendas: { sub: 'Contato, lead, qualificado, proposta e venda', stages: [['Contatos atendidos', 1200], ['Leads identificados', 680], ['Leads qualificados', 324], ['Propostas enviadas', 96], ['Vendas confirmadas', 38]], note: 'Etapas a partir de leads dependem de integração com CRM ou de registro do resultado.' },
+      agendamentos: { sub: 'Contato, interessado, agendamento e confirmação', stages: [['Contatos atendidos', 1200], ['Interessados', 540], ['Agendamentos', 112], ['Agendamentos confirmados', 98]], note: 'Para clínicas e serviços, o resultado final é uma consulta agendada.' },
+      suporte: { sub: 'Atendimento, resolução e escalonamento', stages: [['Atendimentos iniciados', 2486], ['Resolvidos pela IA', 2170], ['Escalados para equipe', 316], ['Concluídos pela equipe', 298]], note: 'Resolução exige encerramento sem transferência. Sessões abertas ficam fora.' },
+      geral: { sub: 'Atendimento e resolução pela IA', stages: [['Atendimentos iniciados', 2486], ['Resolvidos pela IA', 2170], ['Com resposta humana', 316]], note: 'Configuração padrão para operações sem objetivo específico.' }
+    }[s.objective];
+    const funStages = FUN.stages.map(st => ({ label: st[0], value: R(st[1] * f) }));
+    const alertsDef = [
+      { key: 'espera', title: '23 clientes aguardando atendimento humano', desc: 'Conversas transferidas que ainda não receberam resposta.', title2: 'Aguardando atendimento humano', rows: [['João Silva', 'Transferido há 14 min', 'Lead quente'], ['Carlos Mendes', 'Transferido há 22 min', 'Suporte'], ['Ana Paula Souza', 'Transferida há 41 min', 'Documentos']], note: 'Mostrando 3 de 23 conversas.' },
+      { key: 'lac', title: '18 perguntas sem conhecimento suficiente', desc: 'Oportunidades de melhorar o treinamento dos agentes.', title2: 'Perguntas sem resposta', rows: [['Qual o prazo de entrega?', '32 ocorrências · Sofia', 'Hoje'], ['Aceita PIX parcelado?', '19 ocorrências · Sofia', 'Hoje'], ['Atende minha cidade?', '11 ocorrências · Carlos', 'Hoje']], note: 'Mostrando 3 de 18 perguntas.' },
+      { key: 'canal', title: '1 canal desconectado', desc: 'WhatsApp de suporte precisa de reconexão.', title2: 'Canais desconectados', rows: [['WhatsApp de suporte', 'Sem conexão desde 08/10', 'Reconectar']], note: 'Atendimentos desse canal não chegam ao painel enquanto estiver desconectado.' }
+    ];
+    const alerts = alertsDef.map(a => ({ title: a.title, desc: a.desc, style: 'display:flex;justify-content:space-between;gap:var(--sp-3);align-items:center;width:100%;padding:14px 0;border:0;border-top:1px solid var(--line);background:transparent;cursor:pointer;text-align:left;font:inherit;color:inherit', open: () => this.setState({ alert: a.key, drill: null }) }));
+    const ad = s.alert ? alertsDef.find(a => a.key === s.alert) : null;
+    const hours = [['08h', 42], ['09h', 68], ['10h', 96], ['11h', 121], ['12h', 118], ['13h', 104], ['14h', 112], ['15h', 126], ['16h', 141], ['17h', 118], ['18h', 88], ['19h', 46]].map(h => ({ l: h[0], v: fmt(h[1] * f), raw: R(h[1] * f), pct: Math.max(4, h[1] / 141 * 100) + '%' }));
+    const hoursData = hours.map(h => ({ label: h.l, value: h.raw }));
+    const chans = [['WhatsApp', 1440], ['Instagram', 520], ['Widget do site', 298], ['Telegram', 149], ['Outros', 79]].map(c => ({ label: c[0], v: fmt(c[1] * f), pct: R(c[1] / 2486 * 100) + '%' }));
+    const agents = [['Sofia', 1242, '91%'], ['Carlos', 871, '82%'], ['Financeiro', 369, '74%']].map(a => ({ n: a[0], v: fmt(a[1] * f), ia: a[2] }));
+    const topics = [['Preço e planos', 24], ['Prazo de entrega', 19], ['Agendamento', 17], ['Pagamento', 14], ['Outros', 26]].map(t => ({ t: t[0], p: t[1] + '%' }));
+    const secKpis = [
+      { label: 'Clientes únicos', value: fmt(total * 0.75), ctx: 'Pessoas distintas no período' },
+      { label: 'Taxa de agendamento', value: '—', ctx: 'Requer integração com a agenda' },
+      { label: 'Taxa de abandono', value: '6,1%', ctx: 'Sem resposta do cliente por 30 min' },
+      { label: 'Tempo de espera humano', value: '6 min 40 s', ctx: 'Da transferência à primeira resposta' },
+      { label: 'Satisfação', value: '—', ctx: 'Requer pesquisa de satisfação' },
+      { label: 'Economia estimada', value: '—', ctx: 'Requer custo por hora configurado' },
+      { label: 'Créditos e consumo', value: '74%', ctx: '18.420 de 25.000 no ciclo' }
+    ];
+    const sources = [
+      { k: 'Atendimentos realizados', f: 'Atendimentos com ID único iniciados no período', l: 'Sessões abertas entram somente após encerramento' },
+      { k: 'Resolução pela IA', f: 'Status de resolução e registro de transferência', l: 'Não presume satisfação. Exclui sessões abertas' },
+      { k: 'Leads qualificados', f: 'Eventos de qualificação do CRM', l: 'Pendente de integração com CRM' },
+      { k: 'Oportunidades geradas', f: 'Registros comerciais com status e origem', l: 'Pipeline não é receita recebida. Pendente' },
+      { k: 'Tempo de 1ª resposta', f: 'Ordem das mensagens recebidas e respondidas', l: 'Depende de mensagens com origem identificada' },
+      { k: 'Transferências humanas', f: 'Eventos de transferência humana', l: 'Base: atendimentos elegíveis do período' }
+    ];
+    return {
+      headDesc: 'Resultado da IA na operação. Período: ' + PER[s.period] + '. Comparação: ' + (s.compare ? 'período anterior' : 'desativada') + '. Fuso America/Sao_Paulo.',
+      viewTabsProps: { tabs: [{ id: 'dash', label: 'Dashboard' }, { id: 'analytics', label: 'Analytics' }], value: s.tab, onChange: id => this.setState({ tab: id }) },
+      period: s.period, agent: s.agent, channel: s.channel, objective: s.objective, view: s.view,
+      setPeriod: e => this.setState({ period: e.target.value, day: null }),
+      setAgent: e => this.setState({ agent: e.target.value }),
+      setChannel: e => this.setState({ channel: e.target.value }),
+      setObjective: e => this.setState({ objective: e.target.value }),
+      setView: e => this.goView(e.target.value),
+      retry: () => this.goView('carregando'),
+      emptyFix: () => { this.goView('dados'); this.setState({ period: '90d', day: null }); },
+      toggleCompare: () => this.setState(st => ({ compare: !st.compare })),
+      compareLabel: s.compare ? 'Comparação ativa' : 'Comparação desativada',
+      periodOpts: [{ value: '7d', label: 'Últimos 7 dias' }, { value: '30d', label: 'Últimos 30 dias' }, { value: '90d', label: 'Últimos 90 dias' }],
+      agentOpts: [{ value: 'todos', label: 'Todos os agentes' }, { value: 'sofia', label: 'Sofia' }, { value: 'carlos', label: 'Carlos' }, { value: 'financeiro', label: 'Financeiro' }],
+      channelOpts: [{ value: 'todos', label: 'Todos os canais' }, { value: 'whatsapp', label: 'WhatsApp' }, { value: 'instagram', label: 'Instagram' }, { value: 'widget', label: 'Widget do site' }],
+      objOpts: [{ value: 'vendas', label: 'Vendas e qualificação' }, { value: 'agendamentos', label: 'Agendamentos' }, { value: 'suporte', label: 'Suporte' }, { value: 'geral', label: 'Atendimento geral' }],
+      bannerOn: isData && (noPerm || ins),
+      bannerText: noPerm ? 'Seu perfil não tem acesso a indicadores comerciais. Solicite acesso ao administrador da conta.' : 'Histórico insuficiente. São necessários 7 dias para comparar períodos.',
+      dash: !isAn, isAn, isLoad, isEmpty, isErr, isData, isIns: ins, notIns: !ins,
+      skel: [1, 2, 3, 4, 5, 6],
+      kpis, hasDrill: !!dd && isData, drillTitle: dd ? dd.title : '', drillRows: dd ? dd.rows.map(r => ({ a: r[0], b: r[1] })) : [], drillNote: dd ? dd.note : '', closeDrill: () => this.setState({ drill: null }),
+      evoSub: labels[0] + ' a ' + labels[labels.length - 1] + ' · ' + (s.compare ? 'comparado ao período anterior' : 'sem comparação'),
+      evoLegend, evoData, evoPrev, fmtVal, evoMove, evoLeave, day: s.day, dayInsight,
+      funSub: FUN.sub, funStages, funNote: FUN.note,
+      alerts, hasAlert: !!ad && isData, alertTitle: ad ? ad.title2 : '', alertRows: ad ? ad.rows.map(r => ({ a: r[0], b: r[1], c: r[2] })) : [], alertNote: ad ? ad.note : '', closeAlert: () => this.setState({ alert: null }),
+      secKpis, hours, hoursData, peakIdx: 8, chans, agents, topics, sources
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+---
+name: "GPT Maker Dashboard Spec Review"
+version: "1.0"
+description: "Auditoria completa de specs, PRD, requisitos, agentes, arquitetura e roadmap do painel white-label"
+created_at: "2026-10-11"
+owner: "Higor Plens"
+
+# Fases de execução
+phases:
+  - id: "phase-review"
+    title: "Revisão Paralela de Especialidades"
+    description: "6 especialistas auditam em paralelo: requisitos, arquitetura, design, roadmap, agentes, segurança"
+    execution: "parallel"
+
+phases:
+  - id: "phase-synthesis"
+    title: "Síntese e Consolidação"
+    description: "Consolidar achados, riscos, gaps e criar plano otimizado"
+    execution: "serial"
+
+# Pipeline de agentes
+pipeline:
+  - phase: "phase-review"
+    agents:
+      - agent: "requirements-validator"
+        role: "Requirements Analyst"
+        task: "Validar 02-REQUISITOS.md: P0/P1/P2, papéis, critérios aceite, gaps"
+
+      - agent: "architecture-auditor"
+        role: "Backend Architect"
+        task: "Revisar 01-STACK, 04-ARQUITETURA: Next.js+PG+Auth.js+Drizzle, isolamento multi-org, worker"
+
+      - agent: "design-optimizer"
+        role: "Frontend Architect"
+        task: "Validar 03-TELAS-E-DESIGN: rotas, estados, componentes, tokens, UX flow"
+
+      - agent: "roadmap-orchestrator"
+        role: "Plan Agent"
+        task: "Revisar 07-ROADMAP: fases M0-M7, gates, backlog, dependências, sequência"
+
+      - agent: "agent-skills-mapper"
+        role: "PM Agent"
+        task: "Validar 06-AGENTES-E-SKILLS: responsabilidades, instruções, capabilities"
+
+      - agent: "security-qa-lead"
+        role: "Security Engineer"
+        task: "Auditar 09-QUALIDADE-SEGURANCA: isolamento multi-org, autenticação, auditoria, testes"
+
+  - phase: "phase-synthesis"
+    agents:
+      - agent: "synthesis-lead"
+        role: "Architect"
+        task: "Consolidar achados, criar matriz de riscos, checklist de decisões, sequência otimizada, mapa de memory, prompt para implementação"
+
+# Saídas esperadas
+outputs:
+  - name: "AUDIT_FINDINGS.md"
+    format: "markdown"
+    description: "Achados estruturados por categoria"
+
+  - name: "RISK_MATRIX.md"
+    format: "markdown"
+    description: "Matriz de riscos com impacto/probabilidade"
+
+  - name: "DECISIONS_CHECKLIST.md"
+    format: "markdown"
+    description: "Decisões pendentes bloqueantes vs informativas"
+
+  - name: "OPTIMIZED_ROADMAP.md"
+    format: "markdown"
+    description: "Roadmap resequenciado com dependências explícitas"
+
+  - name: "MEMORY_MAP.md"
+    format: "markdown"
+    description: "Estrutura de rastreabilidade em memory"
+
+  - name: "IMPLEMENTATION_PROMPT.md"
+    format: "markdown"
+    description: "Prompt pronto para próxima fase (codex/implementação)"
+
+# Constraints
+constraints:
+  - "Não gerar código"
+  - "Focar em gaps, riscos, otimizações"
+  - "Estruturar para paralelização máxima"
+  - "Documentar tudo em memory para rastreabilidade"
+  - "Validar contra 11-DECISOES-PENDENCIAS-E-RASTREABILIDADE.md"
+
+tags:
+  - "gpt-maker"
+  - "spec-review"
+  - "architecture"
+  - "pre-implementation"
+  - "white-label"

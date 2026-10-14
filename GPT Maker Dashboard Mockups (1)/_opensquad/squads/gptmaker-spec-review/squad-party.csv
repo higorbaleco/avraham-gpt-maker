@@ -1,0 +1,8 @@
+id,agent,name,role,specialization,status
+1,requirements-validator,Valdis,Requirements Analyst,Requisitos e critérios de aceite,active
+2,architecture-auditor,Arquitetos,Backend Architect,Arquitetura de sistemas,active
+3,design-optimizer,Vera,Frontend Architect,UX e design system,active
+4,roadmap-orchestrator,Plano,Plan Agent,Planejamento e sequência,active
+5,agent-skills-mapper,Orquestra,PM Agent,Coordenação de agentes e skills,active
+6,security-qa-lead,Guarda,Security Engineer,Segurança e qualidade,active
+7,synthesis-lead,Síntese,Architect,Consolidação e síntese,active

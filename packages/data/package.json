@@ -1,0 +1,27 @@
+{
+  "name": "@gpt-maker/data",
+  "version": "0.1.0",
+  "description": "Database schema, migrations, and data layer with Drizzle ORM",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src --max-warnings 0",
+    "type-check": "tsc --noEmit",
+    "migrate": "drizzle-kit migrate"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.29.1",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "@types/pg": "^8.11.2",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "drizzle-kit": "^0.20.14",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1",
+    "typescript": "^5.3.3"
+  }
+}

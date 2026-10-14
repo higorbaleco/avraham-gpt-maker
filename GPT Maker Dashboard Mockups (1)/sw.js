@@ -1,0 +1,4 @@
+const V='avraham-v1';const SHELL=['Painel%20Avraham.dc.html','support.js','manifest.webmanifest','assets/logos/logo-preta-whatsapp-ia.svg','assets/logos/icon-degrade-verde.svg'];
+self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(SHELL).catch(()=>{})).then(()=>self.skipWaiting()))});
+self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==V).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
+self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;e.respondWith(fetch(e.request).then(r=>{const c=r.clone();if(r.ok&&(new URL(e.request.url).origin===location.origin||/fonts\.g|unpkg/.test(e.request.url)))caches.open(V).then(x=>x.put(e.request,c));return r}).catch(()=>caches.match(e.request).then(m=>m||(e.request.mode==='navigate'?caches.match('Painel%20Avraham.dc.html'):undefined))))});

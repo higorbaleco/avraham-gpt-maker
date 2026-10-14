@@ -1,0 +1,99 @@
+# GPT Maker
+
+- [Introdução](https://developer.gptmaker.ai/introduction.md): Bem vindo a documentação do GPT Maker
+- [Cobrança](https://developer.gptmaker.ai/billing.md): Entenda como funciona a assinatura do GPT Maker
+- [Criar agente](https://developer.gptmaker.ai/agents/create-agent.md): Crie seu primeiro agente em 5 minutos
+- [Modelos de LLM](https://developer.gptmaker.ai/agents/change-model.md): Escolha o modelo que o agente usará nas respostas
+- [Perfil](https://developer.gptmaker.ai/agents/agent-profile.md): Edite os dados de perfil do agente
+- [Treinamento](https://developer.gptmaker.ai/agents/agent-train.md): Dê conhecimentos sobre sua empresa ou produto para o agente
+- [Intenções](https://developer.gptmaker.ai/agents/agent-intentions.md): Permita que seu agente se conecte com outras APIs
+- [Integrações](https://developer.gptmaker.ai/agents/agent-integrations.md): Confira as opções de integrações nativas da plataforma
+- [Canais](https://developer.gptmaker.ai/agents/agent-channels.md): Conecte seu agente aos canais para atender os clientes
+- [Convidar equipe](https://developer.gptmaker.ai/team/invite-member.md): Convide as pessoas da sua equipe para moderar os atendimentos
+- [Chat](https://developer.gptmaker.ai/chat/monitor.md): Monitore os atendimentos do agente e assuma se necessário
+- [Introdução](https://developer.gptmaker.ai/api-reference/introduction.md): Documentação completa da API de integração com GPT Maker.
+- [Lista os workspaces](https://developer.gptmaker.ai/api-reference/workspace/list.md): Lista os workspaces da conta
+- [Saldo de créditos](https://developer.gptmaker.ai/api-reference/workspace/credits.md): Lista a quantidade de crédito disponível na conta.
+- [Lista agentes](https://developer.gptmaker.ai/api-reference/workspace/list-agent.md): Lista os agentes disponíveis nesse workspace
+- [Criar agente](https://developer.gptmaker.ai/api-reference/workspace/create-agent.md): Cria um novo agente no workspace
+- [Deletar agente](https://developer.gptmaker.ai/api-reference/agents/delete-agent.md): Remover agente
+- [Buscar agente por ID](https://developer.gptmaker.ai/api-reference/agents/get-by-id.md): Busca dados do agente por ID
+- [Consumo de créditos](https://developer.gptmaker.ai/api-reference/agents/credits-spent.md): Retorna o consumo de créditos por agente dentro de um período
+- [Atualizar o agente](https://developer.gptmaker.ai/api-reference/agents/update.md): Atualiza os detalhes de um agente existente
+- [Inativar agente](https://developer.gptmaker.ai/api-reference/agents/inactive.md): Inativa um agente existente
+- [Ativar agente](https://developer.gptmaker.ai/api-reference/agents/active.md): Ativa um agente existente
+- [Pegar configurações](https://developer.gptmaker.ai/api-reference/agents/get-settings.md): Obtém as configurações de um agente existente
+- [Atualizar configurações](https://developer.gptmaker.ai/api-reference/agents/settings.md): Atualiza as configurações de um agente existente
+- [Pegar Webhooks](https://developer.gptmaker.ai/api-reference/agents/get-webhooks.md): Obtém os webhooks configurados em um agente
+- [Atualizar webhooks](https://developer.gptmaker.ai/api-reference/agents/webhooks.md): Atualiza os webhooks de um agente
+- [Conversar com agente](https://developer.gptmaker.ai/api-reference/agents/conversation.md): Permite conversar com o agente via API enviando texto, imagem ou áudio
+- [Adicionar contexto](https://developer.gptmaker.ai/api-reference/agents/add-context.md): Permite adicionar uma mensagem ao contexto da conversa, muito usado para quando fizer um disparo ativo por outras ferramentas e precisa adicionar essa mensagem ao contexto da conversa.
+- [Listar histórico de comportamento](https://developer.gptmaker.ai/api-reference/agents/list-behavior-history.md): Este endpoint retorna a lista de registros do histórico de comportamentos do agente, permitindo consultar as alterações realizadas ao longo do tempo.
+- [Listar treinamentos](https://developer.gptmaker.ai/api-reference/agents/list-trainings.md): Lista os treinamentos do agente
+- [Criar treinamento](https://developer.gptmaker.ai/api-reference/agents/create-training.md): Adiciona um novo treinamento ao agente
+- [Atualizar treinamento](https://developer.gptmaker.ai/api-reference/trainings/update-training.md): Atualiza um treinamento ao agente. Atualmente só é possível atualizar treinamentos de texto, para os demais treinamentos, é necessário remover e adicionar novamente.
+- [Remover treinamento](https://developer.gptmaker.ai/api-reference/trainings/delete-training.md): Deleta um treinamento existente
+- [Listar campos](https://developer.gptmaker.ai/api-reference/custom-field/list-custom-field.md): Lista os campos customizados
+- [Criar campo](https://developer.gptmaker.ai/api-reference/custom-field/create-custom-field.md): Cria um novo campo personalizado
+- [Atualizar campos](https://developer.gptmaker.ai/api-reference/custom-field/update-custom-field.md): Atualiza um campo customizado existente. O campo é identificado pelo seu ID.
+- [Arquivar campo](https://developer.gptmaker.ai/api-reference/custom-field/archive-custom-field.md): Atualiza o status de arquivamento de um campo customizado existente. O campo é identificado pelo seu ID e o novo status é passado como parâmetro de query.
+- [Listar Ações](https://developer.gptmaker.ai/api-reference/idle-actions/list-idle-actions.md): Listar as ações de inatividade
+- [Criar Ações](https://developer.gptmaker.ai/api-reference/idle-actions/create-idle-actions.md): Cria uma nova ação de inatividade
+- [Atualizar Ações](https://developer.gptmaker.ai/api-reference/idle-actions/update-idle-actions.md): Atualizar uma nova ação de inatividade
+- [Deletar Ações](https://developer.gptmaker.ai/api-reference/idle-actions/delete-idle-actions.md): Deleta uma ação existente
+- [Listar regras](https://developer.gptmaker.ai/api-reference/transfer-rules/list-transfer-rules.md): Lista as regras de transferência
+- [Criar regras](https://developer.gptmaker.ai/api-reference/transfer-rules/create-transfer-rules.md): Cria uma nova regra de transferência para o agente especificado
+- [Atualizar regra](https://developer.gptmaker.ai/api-reference/transfer-rules/update-transfer-rules.md): Atualiza uma regra de transferência existente
+- [Deletar regra](https://developer.gptmaker.ai/api-reference/transfer-rules/delete-transfer-rules.md): Deleta uma regra de transferência existente
+- [Listar intenções](https://developer.gptmaker.ai/api-reference/intentions/list-intentions.md): Lista as intenções do agente
+- [Criar intenção](https://developer.gptmaker.ai/api-reference/intentions/create-intention.md): Adiciona uma nova intenção ao agente
+- [Atualizar intenção](https://developer.gptmaker.ai/api-reference/intentions/update-intention.md): Atualiza os dados de uma intenção
+- [Remover intenção](https://developer.gptmaker.ai/api-reference/intentions/delete-intention.md): Deleta uma intenção existente
+- [Criar conexão MCP](https://developer.gptmaker.ai/api-reference/mcp/add.md): Permite criar uma conexão MCP
+- [Conectar MCP](https://developer.gptmaker.ai/api-reference/mcp/connect.md): Permite conectar a uma conexão MCP caso for OAUTH
+- [Listar ferramentas](https://developer.gptmaker.ai/api-reference/mcp/list-tools.md): Lista as ferramentas de um MCP específico
+- [Ativar ferramenta](https://developer.gptmaker.ai/api-reference/mcp/active-tool.md): Ativa determinada ferramenta do MCP
+- [Inativar ferramenta](https://developer.gptmaker.ai/api-reference/mcp/inactive-tool.md): Inativa determinada ferramenta do MCP
+- [Sincronizar ferramentas](https://developer.gptmaker.ai/api-reference/mcp/sync-tools.md): Sincroniza ferramentas do MCP
+- [Deletar MCP](https://developer.gptmaker.ai/api-reference/mcp/delete-mcp.md): Deleta um MCP existente
+- [Listar chats](https://developer.gptmaker.ai/api-reference/chats/list-chats.md): Lista os chats do workspace
+- [Deletar chat](https://developer.gptmaker.ai/api-reference/chats/delete-chat.md): Deletar um chat
+- [Listar mensagens](https://developer.gptmaker.ai/api-reference/chats/list-messages.md): Lista as mensagens de um chat
+- [Deletar mensagens](https://developer.gptmaker.ai/api-reference/chats/delete-messages.md): Limpar mensagens
+- [Assumir atendimento](https://developer.gptmaker.ai/api-reference/chats/start-human.md): Marcar que um humano vai assumir o atendimento, IA para de responder o chat.
+- [Encerrar atendimento](https://developer.gptmaker.ai/api-reference/chats/stop-human.md): Encerrar atendimento humano, isso fará que a proxima interação do cliente, o agente volte a responder.
+- [Enviar mensagem](https://developer.gptmaker.ai/api-reference/chats/send-message.md): Envia uma nova mensagem para o chat
+- [Deletar mensagem](https://developer.gptmaker.ai/api-reference/chats/delete-message.md): Remove uma mensagem de um canal específico. Esta funcionalidade está disponível apenas para os canais Z-API, Telegram e Widget.
+- [Editar mensagem](https://developer.gptmaker.ai/api-reference/chats/edit-message.md): Edita uma mensagem em um canal específico. Esta funcionalidade está disponível apenas para os canais Z-API, Telegram e Widget, pois nem todos os tipos de canal permitem edição de mensagens.
+- [Buscar contatos](https://developer.gptmaker.ai/api-reference/contacts/search-contacts.md): Busca todos os contatos
+- [Buscar Contato](https://developer.gptmaker.ai/api-reference/contacts/get-contact-by-id.md): Buscar um contato em específico
+- [Atualizar contato](https://developer.gptmaker.ai/api-reference/contacts/update-contact.md): Atualiza os dados de um contato em específico
+- [Deletar Contato](https://developer.gptmaker.ai/api-reference/contacts/delete-contact-by-id.md): Deleta um contato em específico
+- [Listar atendimentos](https://developer.gptmaker.ai/api-reference/interactions/list-interactions.md): Lista os atendimentos de um workspace, uma mesma conversa com seu cliente pode gerar vários atendimentos, pois o cliente pode retornar várias vezes, essa api lista todos os atendimentos, quando iniciou, quando finalizou, status etc..
+- [Mensagens do atendimento](https://developer.gptmaker.ai/api-reference/interactions/list-messages.md): Lista as mensagens de um atendimento especifico, muitos clientes usam dessa API para gerar resumos ou fazer análises sobre o atendimento.
+- [Deletar atendimento](https://developer.gptmaker.ai/api-reference/interactions/delete-interactions.md): Deleta um atendimento da listagem
+- [Listar canais](https://developer.gptmaker.ai/api-reference/channels/list-channels.md): Lista os canais de um agente
+- [Listar canais do workspace](https://developer.gptmaker.ai/api-reference/channels/list-channels2.md): Este é o endpoint mais atualizado para listagem de canais, onde os canais são gerenciados separadamente dos agentes (desmembrados), refletindo a nova estrutura do sistema.
+- [Criar canal no workspace](https://developer.gptmaker.ai/api-reference/channels/create-channel-workspace.md): Endpoint mais atualizado para criação de canais. Permite criar um canal de forma independente, sem necessidade de vinculá-lo a um agente.
+- [Remover canal](https://developer.gptmaker.ai/api-reference/channels/remove-channel.md): Remover canal
+- [Editar canal](https://developer.gptmaker.ai/api-reference/channels/edit-channel.md): Atualiza as informações do canal, permitindo alterar o nome e vincular (ou trocar) o agente associado ao canal.
+- [Listar configurações do canal](https://developer.gptmaker.ai/api-reference/channels/list-channel-config.md): Retorna as configurações de um canal específico a partir do seu ID, permitindo consultar todos os detalhes e parâmetros cadastrados para esse canal.
+- [Atualizar configurações do canal](https://developer.gptmaker.ai/api-reference/channels/edit-channel-config.md): Atualiza as configurações de um canal específico
+- [Configurações](https://developer.gptmaker.ai/api-reference/channels/widget/update-settings.md): Atualiza as configurações do canal do tipo widget
+- [Pegar links](https://developer.gptmaker.ai/api-reference/channels/widget/get-links.md): Pega os links dos scripts do widget para injetar no site
+- [Iniciar conversa](https://developer.gptmaker.ai/api-reference/channels/start-conversation.md): Iniciar conversa
+- [Pegar QrCode](https://developer.gptmaker.ai/api-reference/channels/qr-code.md): Pega qr-code para conexão.
+
+## OpenAPI Specs
+
+- [openapi](/api-reference/openapi.json)
+
+## Optional
+
+- [Canal do Youtube](https://www.youtube.com/@GPTMaker)
+- [Whatsapp](https://chat.whatsapp.com/CcOhvMNtwW9K5vjAtYFjHr)
+- [Discord](https://discord.gg/R8mZHFg6xM)
+- [Blog](https://www.gptmaker.ai/blog/)
+
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.
